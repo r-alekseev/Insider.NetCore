@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Insider.Server.UIStreaming\Insider.Server.UIStreaming.csproj" />
+    <ProjectReference Include="..\Insider.UIStreaming.Protocol.JsonRpc\Insider.UIStreaming.Protocol.JsonRpc.csproj" />
+    <ProjectReference Include="..\Insider.UIStreaming.Server.WebSockets\Insider.UIStreaming.Server.WebSockets.csproj" />
+    <ProjectReference Include="..\Insider.UIStreaming\Insider.UIStreaming.csproj" />
     <ProjectReference Include="..\Insider\Insider.csproj" />
   </ItemGroup>
 

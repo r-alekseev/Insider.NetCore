@@ -1,28 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Insider.UIStreaming;
+using System;
+using System.Threading.Tasks;
 
 namespace Insider.Local
 {
     public class LocalInsider : IInsider
     {
-        private readonly ILocalInsiderConfiguration _configuration;
+        private readonly IUIStreamingServer _uiStreamingServer;
+        private readonly IUIStreamingProtocol _uiStreamingProtocol;
 
-        public LocalInsider(ILocalInsiderConfiguration configuration)
+        public LocalInsider(
+            IUIStreamingServer uiStreamingServer,
+            IUIStreamingProtocol uiStreamingProtocol)
         {
-            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _uiStreamingServer = uiStreamingServer ?? throw new ArgumentNullException(nameof(uiStreamingServer));
+            _uiStreamingProtocol = uiStreamingProtocol ?? throw new ArgumentNullException(nameof(uiStreamingProtocol));
         }
 
-        public void SetMetrics(IEnumerable<(string[] Key, int Count, TimeSpan Duration)> metrics)
-        {
-        }
+        public void SetMetric(string[] key, int count, TimeSpan duration) => _uiStreamingProtocol
+            .SetMetric(key, count, duration);
 
-        public void SetStates(IEnumerable<(string[] Key, string Value)> states)
-        {
-        }
+        public void SetState(string[] key, string value) => _uiStreamingProtocol
+            .SetState(key, value);
 
-        public void Run()
-        {
+        public void Run() => _uiStreamingServer
+            .Run();
 
-        }
+        public Task StopAsync()=> _uiStreamingServer
+            .StopAsync();
     }
 }

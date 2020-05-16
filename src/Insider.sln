@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insider.Local", "Insider.Lo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profiler.ReportWriter.Insider", "Profiler.ReportWriter.Insider\Profiler.ReportWriter.Insider.csproj", "{ADEDC075-6945-448D-B35A-301330182922}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.Demo.ConsoleApp", "Insider.Demo.ConsoleApp\Insider.Demo.ConsoleApp.csproj", "{B6F5633B-52F3-417F-B79F-AC0D77B814FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insider.Demo.ConsoleApp", "Insider.Demo.ConsoleApp\Insider.Demo.ConsoleApp.csproj", "{B6F5633B-52F3-417F-B79F-AC0D77B814FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.Server.UIStreaming", "Insider.Server.UIStreaming\Insider.Server.UIStreaming.csproj", "{887D134D-0440-4B83-8854-65F6B02E205C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIStreaming", "Insider.UIStreaming\Insider.UIStreaming.csproj", "{1D8942F1-ACEE-471B-BC5B-72C53C52FBAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIStreaming.Server.WebSockets", "Insider.UIStreaming.Server.WebSockets\Insider.UIStreaming.Server.WebSockets.csproj", "{1F2D7FDF-9B69-4699-A34A-155461AD08E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIStreaming.Protocol.JsonRpc", "Insider.UIStreaming.Protocol.JsonRpc\Insider.UIStreaming.Protocol.JsonRpc.csproj", "{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +39,18 @@ Global
 		{B6F5633B-52F3-417F-B79F-AC0D77B814FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F5633B-52F3-417F-B79F-AC0D77B814FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6F5633B-52F3-417F-B79F-AC0D77B814FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{887D134D-0440-4B83-8854-65F6B02E205C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{887D134D-0440-4B83-8854-65F6B02E205C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{887D134D-0440-4B83-8854-65F6B02E205C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{887D134D-0440-4B83-8854-65F6B02E205C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8942F1-ACEE-471B-BC5B-72C53C52FBAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8942F1-ACEE-471B-BC5B-72C53C52FBAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8942F1-ACEE-471B-BC5B-72C53C52FBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8942F1-ACEE-471B-BC5B-72C53C52FBAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F2D7FDF-9B69-4699-A34A-155461AD08E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2D7FDF-9B69-4699-A34A-155461AD08E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F2D7FDF-9B69-4699-A34A-155461AD08E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F2D7FDF-9B69-4699-A34A-155461AD08E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
