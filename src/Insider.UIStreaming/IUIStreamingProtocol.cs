@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Insider
+namespace Insider.UIStreaming
 {
-    public interface IInsider
+    public interface IUIStreamingProtocol
     {
         void SetState(string[] key, string value);
         void SetMetric(string[] key, int count, TimeSpan duration);

@@ -1,31 +1,58 @@
 ﻿using Insider;
 using Insider.Local;
-using Insider.Server.UIStreaming;
+using Insider.UIStreaming;
+using Insider.UIStreaming.Protocol.JsonRpc;
+using Insider.UIStreaming.Server.WebSockets;
 using System;
+using System.Collections.Concurrent;
 
 namespace Profiler
 {
     public static class LocalInsiderConfigurationExtensions
     {
-        public static LocalInsider CreateInsider(this ILocalInsiderConfiguration settings)
+        public static LocalInsider CreateInsider(this ILocalInsiderConfiguration configuration)
         {
-            return new LocalInsider(settings);
+            var uiStreamingServer = configuration.CreateUIStreamingServer();
+            var uiStreamingProtocol = configuration.CreateUIStreamingProtocol();
+
+            return new LocalInsider(uiStreamingServer, uiStreamingProtocol);
         }
 
-        public static ILocalInsiderConfiguration ConfigureDefault(this ILocalInsiderConfiguration settings)
+
+        public static ILocalInsiderConfiguration ConfigureDefault(this ILocalInsiderConfiguration configuration)
         {
-            // add websockets ui-streaming
-            // add ui-web
-            return settings;
+            var messagesQueue = new ConcurrentQueue<byte[]>();
+
+            return configuration
+                .UseJsonRpcUIStreamingProtocol(messagesQueue)
+                .UseWebSocketUIStreamingServer(new HttpListenerWebSocketUIStreamingServerSettings(), messagesQueue);
         }
 
-        public static ILocalInsiderConfiguration UseUIStreaming(this ILocalInsiderConfiguration settings, Func<IUIStreamingServer> create)
+
+        public static ILocalInsiderConfiguration UseUIStreamingServer(this ILocalInsiderConfiguration configuration, Func<IUIStreamingServer> create)
         {
-            settings.CreateUIStreamingServer = create;
-            return settings;
+            configuration.CreateUIStreamingServer = create;
+            return configuration;
         }
 
-        public static ILocalInsiderConfiguration UseDummyUIStreaming(this ILocalInsiderConfiguration settings) => settings
-            .UseUIStreaming(create: () => new DummyUIStreamingServer());
+        public static ILocalInsiderConfiguration UseUIStreamingProtocol(this ILocalInsiderConfiguration configuration, Func<IUIStreamingProtocol> create)
+        {
+            configuration.CreateUIStreamingProtocol = create;
+            return configuration;
+        }
+
+
+        public static ILocalInsiderConfiguration UseDummyUIStreamingServer(this ILocalInsiderConfiguration configuration) => configuration
+            .UseUIStreamingServer(create: () => new DummyUIStreamingServer());
+
+        public static ILocalInsiderConfiguration UseDummyUIStreamingProtocol(this ILocalInsiderConfiguration configuration) => configuration
+            .UseUIStreamingProtocol(create: () => new DummyUIStreamingProtocol());
+
+
+        public static ILocalInsiderConfiguration UseWebSocketUIStreamingServer(this ILocalInsiderConfiguration configuration, HttpListenerWebSocketUIStreamingServerSettings settings, ConcurrentQueue<byte[]> messagesQueue) => configuration
+            .UseUIStreamingServer(create: () => new HttpListenerWebSocketUIStreamingServer(settings, messagesQueue));
+
+        public static ILocalInsiderConfiguration UseJsonRpcUIStreamingProtocol(this ILocalInsiderConfiguration configuration, ConcurrentQueue<byte[]> messagesQueue) => configuration
+            .UseUIStreamingProtocol(create: () => new JsonRpcUIStreamingProtocol(messagesQueue));
     }
 }

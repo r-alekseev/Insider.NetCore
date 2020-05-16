@@ -33,10 +33,13 @@ namespace Profiler
                     resultSelector: (key, list) => (
                         Chain: key,
                         Count: list.Sum(m => m.Count),
-                        Ticks: TimeSpan.FromTicks(list.Sum(m => m.Elapsed.Ticks))),
+                        Duration: TimeSpan.FromTicks(list.Sum(m => m.Elapsed.Ticks))),
                     comparer: _chainEqualityComparer);
 
-            _insider.SetMetrics(metrics);
+            foreach ((string[] chain, int count, TimeSpan duration) in metrics)
+            {
+                _insider.SetMetric(chain, count, duration);
+            }
         }
     }
 }
