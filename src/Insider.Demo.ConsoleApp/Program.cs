@@ -22,33 +22,33 @@ namespace Insider.Demo.ConsoleApp
             insider.Run();
 
             Console.WriteLine("Commands:");
-            Console.WriteLine("0 - exit");
-            Console.WriteLine("1 - measure-start KEY");
-            Console.WriteLine("2 - measure-pause KEY");
-            Console.WriteLine("3 - measure-report");
-            Console.WriteLine("4 - state-set KEY VALUE");
-
+            Console.WriteLine("e - exit");
+            Console.WriteLine("s - measure-start KEY");
+            Console.WriteLine("p - measure-pause KEY");
+            Console.WriteLine("r - measure-report");
+            Console.WriteLine("v - state-set KEY VALUE");
+            Console.WriteLine("b - open browser with `ui-web` page");
 
             var sections = new Dictionary<string, ISection>();
 
             while (true)
             {
                 Console.WriteLine();
-                Console.WriteLine("Press '0', '1', '2', '3' or '4':");
+                Console.WriteLine("Press one key of: 'e', 's', 'p', 'r', 'v', 'b':");
 
                 var command = Console.ReadKey().KeyChar;
 
-                if (!new[] { '0', '1', '2', '3', '4' }.Contains(command))
+                if (!new[] { 'e', 's', 'p', 'r', 'v', 'b' }.Contains(command))
                 {
                     break;
                 }
 
-                if (command == '0')
+                if (command == 'e')
                 {
                     await insider.StopAsync();
                     break;
                 }
-                else if (command == '1')
+                else if (command == 's')
                 {
                     Console.WriteLine(" - measure-start");
 
@@ -60,7 +60,7 @@ namespace Insider.Demo.ConsoleApp
                         sections[key] = profiler.Section(key);
                     }
                 }
-                else if (command == '2')
+                else if (command == 'p')
                 {
                     Console.WriteLine(" - measure-pause");
 
@@ -76,13 +76,13 @@ namespace Insider.Demo.ConsoleApp
                         sections.Remove(key);
                     }
                 }
-                else if (command == '3')
+                else if (command == 'r')
                 {
                     Console.WriteLine(" - measure-report");
 
                     profiler.WriteReport();
                 }
-                else if (command == '4')
+                else if (command == 'v')
                 {
                     Console.WriteLine(" - state-set");
 
@@ -93,6 +93,10 @@ namespace Insider.Demo.ConsoleApp
                     string value = Console.ReadLine();
 
                     insider.SetState(new[] { key }, value);
+                }
+                else if (command == 'b')
+                {
+                    Browser.Open("http://localhost:8080/ui-web");
                 }
             }
 
