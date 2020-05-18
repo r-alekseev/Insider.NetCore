@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -8,6 +8,8 @@
     <ProjectReference Include="..\Insider.UIStreaming.Protocol.JsonRpc\Insider.UIStreaming.Protocol.JsonRpc.csproj" />
     <ProjectReference Include="..\Insider.UIStreaming.Server.WebSockets\Insider.UIStreaming.Server.WebSockets.csproj" />
     <ProjectReference Include="..\Insider.UIStreaming\Insider.UIStreaming.csproj" />
+    <ProjectReference Include="..\Insider.UIWeb.Server.Http\Insider.UIWeb.Server.Http.csproj" />
+    <ProjectReference Include="..\Insider.UIWeb\Insider.UIWeb.csproj" />
     <ProjectReference Include="..\Insider\Insider.csproj" />
   </ItemGroup>
 

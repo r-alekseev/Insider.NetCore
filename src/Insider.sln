@@ -11,11 +11,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profiler.ReportWriter.Insid
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insider.Demo.ConsoleApp", "Insider.Demo.ConsoleApp\Insider.Demo.ConsoleApp.csproj", "{B6F5633B-52F3-417F-B79F-AC0D77B814FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIStreaming", "Insider.UIStreaming\Insider.UIStreaming.csproj", "{1D8942F1-ACEE-471B-BC5B-72C53C52FBAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insider.UIStreaming", "Insider.UIStreaming\Insider.UIStreaming.csproj", "{1D8942F1-ACEE-471B-BC5B-72C53C52FBAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIStreaming.Server.WebSockets", "Insider.UIStreaming.Server.WebSockets\Insider.UIStreaming.Server.WebSockets.csproj", "{1F2D7FDF-9B69-4699-A34A-155461AD08E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insider.UIStreaming.Server.WebSockets", "Insider.UIStreaming.Server.WebSockets\Insider.UIStreaming.Server.WebSockets.csproj", "{1F2D7FDF-9B69-4699-A34A-155461AD08E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIStreaming.Protocol.JsonRpc", "Insider.UIStreaming.Protocol.JsonRpc\Insider.UIStreaming.Protocol.JsonRpc.csproj", "{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insider.UIStreaming.Protocol.JsonRpc", "Insider.UIStreaming.Protocol.JsonRpc\Insider.UIStreaming.Protocol.JsonRpc.csproj", "{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIWeb", "Insider.UIWeb\Insider.UIWeb.csproj", "{E29D7556-E26B-467A-A825-B03F6D637277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIWeb.Server.Http", "Insider.UIWeb.Server.Http\Insider.UIWeb.Server.Http.csproj", "{9443A777-EF66-4814-9C72-F29F16B861C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insider.UIWeb.Content", "Insider.UIWeb.Content\Insider.UIWeb.Content.csproj", "{1515F591-FFC5-4611-A9A8-C0EEAAED2A1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,18 @@ Global
 		{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA53AED-2CEB-4B8F-9F12-91280F4308D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E29D7556-E26B-467A-A825-B03F6D637277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E29D7556-E26B-467A-A825-B03F6D637277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E29D7556-E26B-467A-A825-B03F6D637277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E29D7556-E26B-467A-A825-B03F6D637277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9443A777-EF66-4814-9C72-F29F16B861C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9443A777-EF66-4814-9C72-F29F16B861C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9443A777-EF66-4814-9C72-F29F16B861C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9443A777-EF66-4814-9C72-F29F16B861C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1515F591-FFC5-4611-A9A8-C0EEAAED2A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1515F591-FFC5-4611-A9A8-C0EEAAED2A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1515F591-FFC5-4611-A9A8-C0EEAAED2A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1515F591-FFC5-4611-A9A8-C0EEAAED2A1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

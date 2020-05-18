@@ -1,0 +1,3 @@
+[submodule "src/Insider.UIWeb.Content/Insider-Web"]
+	path = src/Insider.UIWeb.Content/Insider-Web
+	url = git@github.com:r-alekseev/Insider-Web.git
