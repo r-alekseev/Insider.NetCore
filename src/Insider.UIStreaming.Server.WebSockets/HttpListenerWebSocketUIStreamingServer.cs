@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.WebSockets;
@@ -12,13 +11,13 @@ namespace Insider.UIStreaming.Server.WebSockets
 {
     public class HttpListenerWebSocketUIStreamingServer : IUIStreamingServer
     {
-        private readonly ConcurrentQueue<byte[]> _messagesQueue;
+        private readonly IHttpListenerWebSocketUIStreamingServerSettings _settings;
 
         private readonly HttpListener _httpListener = new HttpListener();
 
         private readonly ConcurrentDictionary<Guid, WebSocket> _connections;
 
-        private readonly IHttpListenerWebSocketUIStreamingServerSettings _settings;
+        private readonly ConcurrentQueue<byte[]> _messagesQueue;
 
         public HttpListenerWebSocketUIStreamingServer(IHttpListenerWebSocketUIStreamingServerSettings settings, ConcurrentQueue<byte[]> messagesQueue)
         {
@@ -39,6 +38,7 @@ namespace Insider.UIStreaming.Server.WebSockets
                 }
 
                 _httpListener.Start();
+
                 Task.Factory.StartNew(async () => await StreamAsync());
                 Task.Factory.StartNew(async () => await AcceptAsync(
                     onAccept: ws => Task.Factory.StartNew(async () => await CatchCloseAsync(ws))));
@@ -81,19 +81,18 @@ namespace Insider.UIStreaming.Server.WebSockets
             {
                 var context = await _httpListener.GetContextAsync();
 
-                if (context.Request.RawUrl == _settings.AcceptingPath)
-                {
-                    var webSocketContext = await context
-                        .AcceptWebSocketAsync(subProtocol: null,
-                            receiveBufferSize: _settings.ReceiveBufferSize,
-                            keepAliveInterval: _settings.KeepAliveInterval);
-
-                    onAccept(webSocketContext.WebSocket);
-                }
-                else
+                if (!context.Request.IsWebSocketRequest || 
+                    context.Request.RawUrl != _settings.AcceptingPath)
                 {
                     context.Response.StatusCode = 400;
                 }
+
+                var webSocketContext = await context
+                    .AcceptWebSocketAsync(subProtocol: null,
+                        receiveBufferSize: _settings.ReceiveBufferSize,
+                        keepAliveInterval: _settings.KeepAliveInterval);
+
+                onAccept(webSocketContext.WebSocket);
             }
         }
 

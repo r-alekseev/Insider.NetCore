@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Insider.UIWeb.Content\Insider.UIWeb.Content.csproj" />
+    <ProjectReference Include="..\Insider.UIWeb\Insider.UIWeb.csproj" />
+  </ItemGroup>
+
+</Project>
