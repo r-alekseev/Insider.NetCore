@@ -22,12 +22,12 @@ namespace Insider.UIStreaming.Protocol.JsonRpc
 
         public void SetMetric(string[] key, int count, TimeSpan duration)
         {
-            Enqueue($"{{\"jsonrpc\": \"2.0\", \"method\": \"metric-set\", \"params\": {{\"key\": \"{string.Join('.', key)}\", \"count\": {count}, \"duration\": {Convert.ToInt32(duration.TotalMilliseconds)}}}");
+            Enqueue($"{{\"jsonrpc\": \"2.0\", \"method\": \"metric-set\", \"params\": {{\"key\": \"{string.Join('.', key)}\", \"count\": {count}, \"duration\": {Convert.ToInt32(duration.TotalMilliseconds)}}}}}");
         }
 
         public void SetState(string[] key, string value)
         {
-            Enqueue($"{{\"jsonrpc\": \"2.0\", \"method\": \"state-set\", \"params\": {{\"key\": \"{string.Join('.', key)}\", \"value\": \"{value}\"}}");
+            Enqueue($"{{\"jsonrpc\": \"2.0\", \"method\": \"state-set\", \"params\": {{\"key\": \"{string.Join('.', key)}\", \"value\": \"{value}\"}}}}");
         }
     }
 }
