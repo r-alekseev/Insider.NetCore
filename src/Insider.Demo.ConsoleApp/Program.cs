@@ -95,7 +95,7 @@ namespace Insider.Demo.ConsoleApp
                 }
                 else if (command == 'b')
                 {
-                    Browser.Open("http://localhost:8080/ui-web");
+                    Browser.Open("http://localhost:8080/insider/ui-web");
                 }
             }
 
