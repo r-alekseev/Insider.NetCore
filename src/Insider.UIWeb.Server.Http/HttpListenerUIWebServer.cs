@@ -1,7 +1,9 @@
 ﻿using Insider.UIWeb;
+using Insider.UIWeb.Content;
 using System;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Insider.UIStreaming.Server.WebSockets
@@ -12,7 +14,7 @@ namespace Insider.UIStreaming.Server.WebSockets
 
         private readonly HttpListener _httpListener = new HttpListener();
 
-        private const string WEB_ROOT = "Insider-Web/content";
+        private const string INDEX_PAGE_EMBEDDED_RESOURCE_NAME = "Insider.UIWeb.Content.Insider_Web.content.index.html";
         private ReadOnlyMemory<byte> _indexPage;
 
         public HttpListenerUIWebServer(IHttpListenerUIWebServerSettings settings)
@@ -39,10 +41,11 @@ namespace Insider.UIStreaming.Server.WebSockets
 
         private void LoadIndexPage()
         {
+            var assembly = Assembly.GetAssembly(typeof(ContentAssemblyType));
             var ms = new MemoryStream();
-            using (FileStream fs = new FileStream(Path.Combine(WEB_ROOT, "index.html"), FileMode.Open, FileAccess.Read))
+            using (var mrs = assembly.GetManifestResourceStream(INDEX_PAGE_EMBEDDED_RESOURCE_NAME))
             {
-                fs.CopyTo(ms);
+                mrs.CopyTo(ms);
             }
             _indexPage = new ReadOnlyMemory<byte>(ms.ToArray());
         }

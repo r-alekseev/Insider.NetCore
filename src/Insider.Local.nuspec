@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <!-- Required elements-->
+    <id>Insider.Local</id>
+    <version>0.1.0</version>
+    <description>Insider exporting your application state and metrics via Web UI.</description>
+    <authors>r_alekseev</authors>
+
+    <!-- Optional elements -->
+    <owners>r_alekseev</owners>
+    <projectUrl>https://github.com/r-alekseev/Insider.NetCore</projectUrl>
+    <license type="expression">MIT</license>
+    <!--<icon/>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--<developmentDependency/>-->
+    <!--<releaseNotes/>-->
+    <copyright>Copyright © 2020 Roman Alekseev</copyright>
+    <!--<language/>-->
+    <tags>dotnet metrics profiler profiling performance diagnostics insider</tags>
+    <repository type="git" url="https://github.com/r-alekseev/Insider.NetCore.git"/>
+    <!--<title/>-->
+    <packageTypes>
+        <packageType name="Dependency" />
+    </packageTypes>
+    <dependencies>
+      <group targetFramework="netstandard2.1">
+        <dependency id="Profiler" version="0.2.0" />
+      </group>
+    </dependencies>
+    <!--<frameworkAssemblies/>-->
+    <!--<references/>-->
+  </metadata>
+  <files>
+    
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.dll" target="lib/netstandard2.1" />
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.Local.dll" target="lib/netstandard2.1" />
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.UIStreaming.dll" target="lib/netstandard2.1" />
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.UIStreaming.Protocol.JsonRpc.dll" target="lib/netstandard2.1" />
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.UIStreaming.Server.WebSockets.dll" target="lib/netstandard2.1" />
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.UIWeb.Content.dll" target="lib/netstandard2.1" />
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.UIWeb.dll" target="lib/netstandard2.1" />
+    <file src="Insider.Local/bin/Release/netstandard2.1/Insider.UIWeb.Server.Http.dll" target="lib/netstandard2.1" />
+    
+    <file src="Profiler.ReportWriter.Insider/bin/Release/netstandard2.1/Profiler.ReportWriter.Insider.dll" target="lib/netstandard2.1" />
+    
+  </files>
+</package>
