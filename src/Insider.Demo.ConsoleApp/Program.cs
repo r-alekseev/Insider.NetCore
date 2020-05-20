@@ -22,12 +22,12 @@ namespace Insider.Demo.ConsoleApp
             insider.Run();
 
             Console.WriteLine("Commands:");
-            Console.WriteLine("e - exit");
-            Console.WriteLine("s - measure-start KEY");
-            Console.WriteLine("p - measure-pause KEY");
-            Console.WriteLine("r - measure-report");
-            Console.WriteLine("v - state-set KEY VALUE");
-            Console.WriteLine("b - open browser with `ui-web` page");
+            Console.WriteLine("e - [E]xit");
+            Console.WriteLine("s - measure-[S]tart KEY");
+            Console.WriteLine("p - measure-[P]ause KEY");
+            Console.WriteLine("r - measure-[R]eport");
+            Console.WriteLine("v - state-set KEY [V]ALUE");
+            Console.WriteLine("b - open [B]rowser with `ui-web` page");
 
             var sections = new Dictionary<string, ISection>();
 
@@ -40,12 +40,11 @@ namespace Insider.Demo.ConsoleApp
 
                 if (!new[] { 'e', 's', 'p', 'r', 'v', 'b' }.Contains(command))
                 {
-                    break;
+                    continue;
                 }
 
                 if (command == 'e')
                 {
-                    await insider.StopAsync();
                     break;
                 }
                 else if (command == 's')
@@ -99,6 +98,8 @@ namespace Insider.Demo.ConsoleApp
                     Browser.Open("http://localhost:8080/ui-web");
                 }
             }
+
+            await insider.StopAsync();
 
             Console.ReadKey();
         }
